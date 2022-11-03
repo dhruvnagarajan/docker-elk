@@ -22,7 +22,7 @@ services:
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
       KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
     networks:
-      - elk
+      - scala
     depends_on:
       - elasticsearch
 
@@ -47,7 +47,7 @@ services:
       # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
     networks:
-      - elk
+      - scala
 
   logstash:
     build:
@@ -66,7 +66,7 @@ services:
       LS_JAVA_OPTS: -Xms256m -Xmx256m
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
     networks:
-      - elk
+      - scala
     depends_on:
       - elasticsearch
 
@@ -84,12 +84,12 @@ services:
       # Fleet plugin
       KIBANA_FLEET_SETUP: '1'
     networks:
-      - elk
+      - scala
     depends_on:
       - elasticsearch
 
 networks:
-  elk:
+  scala:
     driver: bridge
 
 volumes:
