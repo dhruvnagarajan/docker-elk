@@ -75,6 +75,7 @@ services:
       context: kibana/
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
+        SERVER_PUBLICBASEURL: ${SERVER_PUBLICBASEURL}
     volumes:
       - ./kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,Z
     ports:
